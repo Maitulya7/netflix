@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Request from "../Requests";
 import axios from "axios";
+
 const Main = () => {
   const [movies, setMovies] = useState([]);
 
@@ -15,7 +16,7 @@ const Main = () => {
   const movie = movies[Math.floor(Math.random() * movies.length)];
   useEffect(() => {
     axios
-      .get(Request.requestPopular)
+      .get(Request.requestTopRated)
       .then((res) => {
         setMovies(res.data.results);
       })
@@ -28,15 +29,15 @@ const Main = () => {
   console.log(movie);
   return (
     <>
-      <div className="w-full h-[600px] text-white">
+      <div className="w-full h-[600px] md:h-[700px] text-white">
         <div className="w-full h-full">
-          <div className="absolute w-full h-[600px] bg-gradient-to-r from-black"></div>
+          <div className="absolute w-full h-[600px] md:h-[700px] bg-gradient-to-r from-black"></div>
           <img
             className="w-full h-full object-cover"
             src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
             alt={movie?.title}
           />
-          <div className="absolute w-full top-[20%] p-4 md:p-8">
+          <div className="absolute w-full top-[20%] md:top-[30%] p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold">{movie?.title}</h1>
             <div className="my-4">
               <button className="border bg-gray-300 text-black border-gray-300 px-5 py-2">
@@ -50,7 +51,7 @@ const Main = () => {
               Release: {movie?.release_date}
             </p>
             <p className="w-full  md:max-w-[70%] lg:max-w-[50%] xl:max-w-[45%] text-gray-200">
-              {truncateString(movie?.overview , 150)}
+              {truncateString(movie?.overview, 150)}
             </p>
           </div>
         </div>

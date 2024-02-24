@@ -4,16 +4,17 @@ import Row from '../components/Row'
 import requests from '../Requests'
 
 const Home = () => {
+  
   return (
-    <div>
+    <div >
       <Main/>
-      <Row title="Upcoming" fetchURL={requests.requestUpcoming}/>
-      <Row title="Top Rated" fetchURL={requests.requestTopRated}/>
-      <Row title="Trending" fetchURL={requests.requestTrending}/>
-      <Row title="Popular" fetchURL={requests.requestPopular}/>
-      <Row title="Horror" fetchURL={requests.requestHorror}/>
+      <Row rowId='1' title="Upcoming" fetchURL={requests.requestUpcoming}/>
+      <Row rowId='2' title="Top Rated" fetchURL={requests.requestTopRated}/>
+      <Row rowId='3' title="Trending" fetchURL={requests.requestTrending}/>
+      <Row rowId='4' title="Popular" fetchURL={requests.requestPopular}/>
+      <Row rowId='5' title="Horror" fetchURL={requests.requestHorror}/>
     </div>
   )
-}
+} 
 
 export default Home
