@@ -1,16 +1,23 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="flex text-white w-full justify-between items-center p-4 z-[100] absolute">
-      <h1 className="text-red-600 text-4xl cursor-pointer font-medium">
-        NETFLIX
-      </h1>
-      <div className="flex gap-5">
-        <button>Sign In</button>
-        <button className="bg-red-600 px-6 py-2 rounded cursor-pointer">
-          Sign Up
-        </button>
+      <Link to="/">
+        <h1 className="text-red-600 text-4xl cursor-pointer font-medium">
+          NETFLIX
+        </h1>
+      </Link>
+
+      <div className="flex gap-5 items-center">
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+        <Link to="/signup">
+          <button className="bg-red-600 px-6 py-2 rounded cursor-pointer">
+            Sign Up
+          </button>
+        </Link>
       </div>
     </div>
   );
