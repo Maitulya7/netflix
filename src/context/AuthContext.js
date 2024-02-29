@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, on
 
 const AuthContext = createContext();
 
-export function AuthContextProvider({ children }) {
+export  function AuthContextProvider({ children }) {
     const [user, setUser] = useState({});
 
     function signUp(email, password) {
@@ -36,6 +36,6 @@ export function AuthContextProvider({ children }) {
     )
 }
 
-export function UserAuth() {
+export default function UserAuth() {
     return useContext(AuthContext)
 }

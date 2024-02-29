@@ -25,8 +25,6 @@ const Main = () => {
       });
   }, []);
 
-  console.log(movies);
-  console.log(movie);
   return (
     <>
       <div className="w-full h-[600px] md:h-[700px] text-white">
