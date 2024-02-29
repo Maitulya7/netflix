@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserAuth from "../context/AuthContext";
+import GoogleButton from "react-google-button";
+
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { user, logIn } = UserAuth();
+  const { user, logIn , googleSingIn } = UserAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,6 +22,20 @@ const Login = () => {
       setError(error.message);
     }
   };
+
+  const handleGoogleSignIn = async (e) =>{
+    e.preventDefault();
+    try {
+      await googleSingIn();
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+  useEffect(()=>{
+    if(user != null){
+      navigate('/')
+    }
+  },[user])
   return (
     <>
       <div className="w-full h-screen">
@@ -67,6 +84,9 @@ const Login = () => {
                     Sign Up
                   </Link>
                 </p>
+                <div className="flex justify-center">
+                  <GoogleButton onClick={handleGoogleSignIn}/>
+                </div>
               </form>
             </div>
           </div>
